@@ -1,0 +1,103 @@
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+}
+
+.project-card__thumb {
+  display: grid;
+  place-items: center;
+  height: 130px;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+.project-card__body {
+  padding: 1.25rem 1.25rem 0.5rem;
+  flex: 1;
+}
+
+.project-card__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card__desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.project-card__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.project-card__tags li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.project-card__links {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.project-card__link {
+  flex: 1;
+  text-align: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.18s ease,
+    border-color 0.2s ease;
+}
+
+.project-card__link:hover {
+  background: var(--primary-hover);
+  color: var(--primary-contrast);
+  transform: translateY(-2px);
+}
+
+.project-card__link--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.project-card__link--ghost:hover {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
