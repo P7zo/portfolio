@@ -1,27 +1,27 @@
-import { SKILLS } from "../data/content";
-import "./Skills.css";
+import { useLang } from '../context/LanguageContext.jsx'
+import Reveal from './Reveal.jsx'
 
 export default function Skills() {
+  const { t } = useLang()
+  const { skills } = t
+
   return (
     <section id="skills" className="section skills">
       <div className="container">
-        <div className="section-head">
-          <span className="eyebrow">Skills</span>
-          <h2>Tools &amp; Technologies</h2>
-          <p>A selection of the technologies I work with day to day.</p>
-        </div>
+        <Reveal className="section__head">
+          <span className="kicker">{skills.kicker}</span>
+          <h2 className="section__title">{skills.title}</h2>
+        </Reveal>
 
-        <ul className="skills__grid">
-          {SKILLS.map((skill) => (
-            <li key={skill.name} className="skill-card">
-              <span className="skill-card__icon" aria-hidden="true">
-                {skill.icon}
-              </span>
-              <span className="skill-card__name">{skill.name}</span>
-            </li>
+        <div className="skills__grid">
+          {skills.items.map((s, i) => (
+            <Reveal as="div" className="skill-chip" key={s} delay={i * 70}>
+              <span className="skill-chip__bullet" />
+              {s}
+            </Reveal>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
-  );
+  )
 }

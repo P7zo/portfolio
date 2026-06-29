@@ -1,145 +1,61 @@
-import { useState } from "react";
-import { SOCIALS } from "../data/content";
-import "./Contact.css";
+import { useLang } from '../context/LanguageContext.jsx'
+import { contactInfo } from '../data/content.js'
+import Reveal from './Reveal.jsx'
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function validate(values) {
-  const errors = {};
-  if (!values.name.trim()) {
-    errors.name = "Please enter your name.";
-  }
-  if (!values.email.trim()) {
-    errors.email = "Please enter your email.";
-  } else if (!EMAIL_RE.test(values.email.trim())) {
-    errors.email = "Please enter a valid email address.";
-  }
-  if (!values.message.trim()) {
-    errors.message = "Please enter a message.";
-  } else if (values.message.trim().length < 10) {
-    errors.message = "Message should be at least 10 characters.";
-  }
-  return errors;
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  )
+}
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z" />
+    </svg>
+  )
+}
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+      <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.4 8.4h4.2V24H.4V8.4Zm7.5 0h4v2.1h.06c.56-1 1.9-2.1 3.9-2.1 4.2 0 5 2.7 5 6.3V24h-4.2v-6.9c0-1.6 0-3.7-2.3-3.7s-2.6 1.8-2.6 3.6V24h-4.2V8.4Z" />
+    </svg>
+  )
 }
 
 export default function Contact() {
-  const [values, setValues] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const nextErrors = validate(values);
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      // Placeholder: wire this up to your email service / API.
-      setSubmitted(true);
-      setValues({ name: "", email: "", message: "" });
-    }
-  };
+  const { t } = useLang()
+  const { contact } = t
 
   return (
     <section id="contact" className="section contact">
       <div className="container">
-        <div className="section-head">
-          <span className="eyebrow">Contact</span>
-          <h2>Let's Work Together</h2>
-          <p>
-            Have a project in mind or just want to say hi? Drop me a message.
-          </p>
-        </div>
+        <Reveal className="section__head">
+          <span className="kicker">{contact.kicker}</span>
+          <h2 className="section__title">{contact.title}</h2>
+          <p className="contact__body">{contact.body}</p>
+        </Reveal>
 
-        <div className="contact__grid">
-          <form className="contact__form" onSubmit={handleSubmit} noValidate>
-            <div className="field">
-              <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={values.name}
-                onChange={handleChange}
-                aria-invalid={Boolean(errors.name)}
-                placeholder="Jane Doe"
-              />
-              {errors.name && <span className="field__error">{errors.name}</span>}
-            </div>
-
-            <div className="field">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={values.email}
-                onChange={handleChange}
-                aria-invalid={Boolean(errors.email)}
-                placeholder="jane@example.com"
-              />
-              {errors.email && (
-                <span className="field__error">{errors.email}</span>
-              )}
-            </div>
-
-            <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                value={values.message}
-                onChange={handleChange}
-                aria-invalid={Boolean(errors.message)}
-                placeholder="Tell me about your project..."
-              />
-              {errors.message && (
-                <span className="field__error">{errors.message}</span>
-              )}
-            </div>
-
-            <button type="submit" className="btn btn-primary contact__submit">
-              Send Message
-            </button>
-
-            {submitted && (
-              <p className="contact__success" role="status">
-                ✓ Thanks! Your message has been validated (demo — no backend).
-              </p>
-            )}
-          </form>
-
-          <aside className="contact__aside">
-            <h3>Find me online</h3>
-            <p>Prefer another channel? Reach out through any of these.</p>
-            <ul className="contact__socials">
-              <li>
-                <a href={SOCIALS.github} target="_blank" rel="noreferrer">
-                  <span className="contact__social-icon">🐙</span> GitHub
-                </a>
-              </li>
-              <li>
-                <a href={SOCIALS.linkedin} target="_blank" rel="noreferrer">
-                  <span className="contact__social-icon">💼</span> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${SOCIALS.email}`}>
-                  <span className="contact__social-icon">✉️</span>{" "}
-                  {SOCIALS.email}
-                </a>
-              </li>
-            </ul>
-          </aside>
-        </div>
+        <Reveal className="contact__cards" delay={120}>
+          <a className="contact-card" href={`mailto:${contactInfo.email}`}>
+            <span className="contact-card__icon"><MailIcon /></span>
+            <span className="contact-card__label">{contact.emailLabel}</span>
+            <span className="contact-card__value" dir="ltr">{contactInfo.email}</span>
+          </a>
+          <a className="contact-card" href={`tel:${contactInfo.phone}`}>
+            <span className="contact-card__icon"><PhoneIcon /></span>
+            <span className="contact-card__label">{contact.phoneLabel}</span>
+            <span className="contact-card__value" dir="ltr">{contactInfo.phone}</span>
+          </a>
+          <a className="contact-card" href={contactInfo.linkedin} target="_blank" rel="noreferrer">
+            <span className="contact-card__icon"><LinkedInIcon /></span>
+            <span className="contact-card__label">{contact.linkedinLabel}</span>
+            <span className="contact-card__value">awadh-almutairi</span>
+          </a>
+        </Reveal>
       </div>
     </section>
-  );
+  )
 }

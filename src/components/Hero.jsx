@@ -1,31 +1,31 @@
-import "./Hero.css";
+import { useLang } from '../context/LanguageContext.jsx'
 
 export default function Hero() {
+  const { t } = useLang()
+  const { hero } = t
+
   return (
     <section id="home" className="hero">
-      <div className="container hero__inner">
-        <p className="hero__badge">👋 Available for new opportunities</p>
-
-        <h1 className="hero__title">
-          Hi, I'm <span className="hero__highlight">Your Name</span>
-        </h1>
-
-        <p className="hero__tagline">
-          A frontend developer crafting clean, accessible, and responsive web
-          experiences with React and modern JavaScript.
+      <div className="hero__bg" aria-hidden="true" />
+      <div className="hero__inner">
+        <p className="hero__location">
+          <span className="dot" /> {hero.location}
         </p>
-
-        <div className="hero__actions">
-          <a href="#projects" className="btn btn-primary">
-            View Work
+        <h1 className="hero__name">{hero.name}</h1>
+        <p className="hero__title">{hero.title}</p>
+        <p className="hero__bio">{hero.bio}</p>
+        <div className="hero__cta">
+          <a href="#projects" className="btn btn--primary">
+            {hero.ctaProjects}
           </a>
-          <a href="#contact" className="btn btn-ghost">
-            Contact Me
+          <a href="#contact" className="btn btn--ghost">
+            {hero.ctaContact}
           </a>
         </div>
       </div>
-
-      <div className="hero__glow" aria-hidden="true" />
+      <a href="#about" className="hero__scroll" aria-label="Scroll down">
+        <span />
+      </a>
     </section>
-  );
+  )
 }

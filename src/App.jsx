@@ -1,26 +1,24 @@
-import { useTheme } from "./hooks/useTheme";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { LanguageProvider } from './context/LanguageContext.jsx'
+import Navbar from './components/Navbar.jsx'
+import Hero from './components/Hero.jsx'
+import About from './components/About.jsx'
+import Projects from './components/Projects.jsx'
+import Skills from './components/Skills.jsx'
+import Contact from './components/Contact.jsx'
+import Footer from './components/Footer.jsx'
 
 export default function App() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <LanguageProvider>
+      <Navbar />
       <main>
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
       </main>
       <Footer />
-    </>
-  );
+    </LanguageProvider>
+  )
 }

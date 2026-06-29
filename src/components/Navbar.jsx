@@ -1,53 +1,53 @@
-import { useEffect, useState } from "react";
-import { NAV_LINKS } from "../data/content";
-import ThemeToggle from "./ThemeToggle";
-import "./Navbar.css";
+import { useEffect, useState } from 'react'
+import { useLang } from '../context/LanguageContext.jsx'
 
-export default function Navbar({ theme, toggleTheme }) {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const SECTIONS = ['home', 'about', 'projects', 'skills', 'contact']
+
+export default function Navbar() {
+  const { t, lang, toggleLang } = useLang()
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-  // Lock body scroll while the mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  const close = () => setOpen(false);
+  const close = () => setOpen(false)
 
   return (
-    <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-      <nav className="container navbar__inner" aria-label="Primary">
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <nav className="navbar__inner" aria-label="Primary">
         <a href="#home" className="navbar__brand" onClick={close}>
-          <span className="navbar__logo">YN</span>
-          <span className="navbar__name">Your Name</span>
+          <span className="navbar__mark">AM</span>
+          <span className="navbar__name">{t.hero.name}</span>
         </a>
 
-        <ul className={`navbar__links ${open ? "is-open" : ""}`}>
-          {NAV_LINKS.map((link) => (
-            <li key={link.id}>
-              <a href={`#${link.id}`} onClick={close}>
-                {link.label}
+        <ul className={`navbar__links ${open ? 'is-open' : ''}`}>
+          {SECTIONS.map((id) => (
+            <li key={id}>
+              <a href={`#${id}`} onClick={close}>
+                {t.nav[id]}
               </a>
             </li>
           ))}
         </ul>
 
         <div className="navbar__actions">
-          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           <button
             type="button"
-            className={`navbar__burger ${open ? "is-open" : ""}`}
-            aria-label="Toggle menu"
+            className="lang-toggle"
+            onClick={toggleLang}
+            aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+          >
+            {t.langLabel}
+          </button>
+          <button
+            type="button"
+            className={`navbar__burger ${open ? 'is-open' : ''}`}
+            aria-label="Menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
@@ -57,8 +57,6 @@ export default function Navbar({ theme, toggleTheme }) {
           </button>
         </div>
       </nav>
-
-      {open && <div className="navbar__backdrop" onClick={close} />}
     </header>
-  );
+  )
 }
