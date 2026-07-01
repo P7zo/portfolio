@@ -1,60 +1,61 @@
 # Awadh Fahad Almutairi — Portfolio · عوض فهد المطيري
 
-A bilingual (Arabic / English) personal portfolio for **Awadh Fahad Almutairi**,
+Bilingual (Arabic / English) personal portfolio for **Awadh Fahad Almutairi**,
 a media project manager and visual producer based in Riyadh, Saudi Arabia.
-Built with **React 18 + Vite**, featuring a dark elegant theme with a gold accent,
-full RTL/LTR support, and smooth scroll-reveal animations.
-
-موقع شخصي ثنائي اللغة (عربي / إنجليزي) لـ **عوض فهد المطيري**، مدير مشاريع
-إعلامية ومنتج مرئي في الرياض.
+Built with **React 18 + Vite**. Domain: [awadhalmutairi.info](https://awadhalmutairi.info)
 
 ## Features
 
-- 🌐 **Bilingual** Arabic / English with a navbar language toggle
-- ↔️ Automatic **RTL ⇄ LTR** layout switching (default language: Arabic)
-- 🎨 Dark elegant theme (charcoal navy + gold accent)
-- ✨ Smooth scroll-reveal animations on section entry
-- 📱 Fully responsive with a mobile hamburger menu
-- 🗂️ Sections: Hero, About, Key Projects, Skills, Contact
-- 💾 Remembers your language choice in `localStorage`
-
-## Tech Stack
-
-- React 18
-- Vite 5
-- Plain CSS with CSS variables (single global stylesheet)
+- Bilingual Arabic / English with a floating language toggle (default: Arabic)
+- Automatic RTL ⇄ LTR layout switching
+- Muted grayscale aesthetic with light + dark modes (persisted)
+- Black-and-white hero portrait (transparent PNG)
+- Sections: Hero, About (with education), Experience + Projects, Skills, Contact
+- Project cards open a modal with details, "what we did", and a photo gallery
+- Card/modal colors are auto-extracted (muted) from each project's own images
+- Per-project deep links for CVs — e.g. `awadhalmutairi.info/#project-cst`
+- Floating back-to-top button; soft, clean scroll-reveal animations
+- Fully responsive
 
 ## Getting Started
 
 ```bash
 npm install
-npm run dev       # dev server (http://localhost:5173)
+npm run dev       # http://localhost:5173
 npm run build     # production build → dist/
-npm run preview   # preview the production build
+npm run preview
 ```
 
-## Customizing
+## Editing content
 
-All text lives in **`src/data/content.js`** — both `ar` and `en` objects hold the
-nav labels, hero, about, projects, skills, and contact strings. Contact details
-(email, phone, LinkedIn) are in the exported `contactInfo` object in the same file.
+- All text (both languages) and project data: `src/data/content.js`
+  - `projects[]` — set `hidden: true` to remove a project from the site while
+    keeping it in code (the Royal Reserve project is hidden until its images arrive)
+- Contact details: the `contactInfo` object in the same file
+- Images: see `public/images/README.md` for the exact filenames
 
-## Project Structure
+## Project deep links
+
+Each visible project has its own URL that opens it directly, for linking from a CV:
+
+- `https://awadhalmutairi.info/#project-cst`
+- `https://awadhalmutairi.info/#project-irathna`
+
+## Structure
 
 ```
-portfolio/
-├── index.html
-├── vite.config.js
-├── public/favicon.svg
-└── src/
-    ├── main.jsx
-    ├── App.jsx
-    ├── index.css                  # global styles, theme tokens, RTL rules
-    ├── data/content.js            # bilingual content + contact info
-    ├── context/LanguageContext.jsx# language state, dir, persistence
-    ├── hooks/useReveal.js         # IntersectionObserver scroll reveal
-    └── components/
-        ├── Navbar.jsx   Hero.jsx    About.jsx
-        ├── Projects.jsx Skills.jsx  Contact.jsx
-        ├── Footer.jsx   Reveal.jsx
+src/
+├── App.jsx
+├── index.css                     # palette, themes, RTL, all component styles
+├── data/content.js               # bilingual content + projects + contact
+├── context/LanguageContext.jsx   # language state, dir, persistence
+├── hooks/
+│   ├── useTheme.js               # light/dark, persisted
+│   ├── useReveal.js              # scroll-reveal
+│   └── useImageColor.js          # muted color extraction from images
+└── components/
+    ├── TopControls.jsx  ScrollTop.jsx
+    ├── Hero.jsx  About.jsx  Skills.jsx  Contact.jsx  Footer.jsx
+    ├── Experience.jsx  ProjectCard.jsx  ProjectModal.jsx
+    └── Reveal.jsx
 ```

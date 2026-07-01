@@ -15,8 +15,8 @@ export default function Skills() {
 
         <div className="skills__grid">
           {skills.items.map((s, i) => (
-            <Reveal as="div" className="skill-chip" key={s} delay={i * 70}>
-              <span className="skill-chip__bullet" />
+            <Reveal as="div" className="skill-chip" key={s} delay={i * 60}>
+              <span className="skill-chip__bar" />
               {s}
             </Reveal>
           ))}

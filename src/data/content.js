@@ -1,62 +1,40 @@
 // Bilingual content for Awadh Fahad Almutairi's portfolio.
-// Each entry holds both English (en) and Arabic (ar) values.
+
+export const SITE_URL = 'https://awadhalmutairi.info'
 
 export const content = {
   ar: {
     dir: 'rtl',
     langLabel: 'EN',
-    nav: {
-      home: 'الرئيسية',
-      about: 'نبذة',
-      projects: 'المشاريع',
-      skills: 'المهارات',
-      contact: 'تواصل',
-    },
+    themeLabelToDark: 'الوضع الداكن',
+    themeLabelToLight: 'الوضع الفاتح',
+    backToTop: 'العودة للأعلى',
     hero: {
+      greeting: 'مرحباً، أنا',
       name: 'عوض فهد المطيري',
       title: 'مدير مشاريع إعلامية ومنتج مرئي',
       location: 'الرياض، المملكة العربية السعودية',
-      bio: 'خريج كلية الإعلام بجامعة الإمام محمد بن سعود الإسلامية، تخصص الإذاعة والتلفزيون. أعمل في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات.',
-      ctaProjects: 'استعرض المشاريع',
+      bio: 'أعمل في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات، وأحوّل الأفكار إلى مخرجات إعلامية احترافية.',
+      ctaProjects: 'استعرض الأعمال',
       ctaContact: 'تواصل معي',
     },
     about: {
       kicker: 'نبذة',
       title: 'من أنا',
-      body: 'خريج كلية الإعلام بجامعة الإمام محمد بن سعود الإسلامية، تخصص الإذاعة والتلفزيون. أعمل في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات، إلى جانب خبرتي في كتابة المحتوى وصناعة المحتوى الإبداعي. أمتلك قدرة على قيادة المشاريع وإدارة فرق العمل وتحويل الأفكار إلى مخرجات إعلامية احترافية.',
+      body: 'خريج كلية الإعلام بجامعة الإمام محمد بن سعود الإسلامية، تخصص الإذاعة والتلفزيون. أعمل في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات، إلى جانب خبرتي في كتابة المحتوى وصناعة المحتوى الإبداعي. أمتلك قدرة على قيادة المشاريع وإدارة فرق العمل وتحويل الأفكار إلى مخرجات إعلامية احترافية تحقق الأهداف بكفاءة وجودة عالية.',
+      educationLabel: 'التعليم',
+      education: 'بكالوريوس الإعلام — تخصص الإذاعة والتلفزيون',
+      university: 'جامعة الإمام محمد بن سعود الإسلامية',
     },
-    projects: {
-      kicker: 'أبرز الأعمال',
-      title: 'المشاريع الرئيسية',
+    experience: {
+      kicker: 'الخبرة',
+      title: 'الخبرة والأعمال',
+      intro: 'خبرة عملية في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات، من خلال العمل مع جهات حكومية ومؤسسات بارزة على تخطيط وتنفيذ تغطيات وفعاليات احترافية. فيما يلي أبرز الأعمال:',
       roleLabel: 'الدور',
-      items: [
-        {
-          client: 'هيئة الاتصالات والفضاء والتقنية',
-          role: 'فعالية رسمية بحضور معالي الوزير عبدالله السواحة',
-          bullets: [
-            'إدارة الفعالية والإشراف عليها من مرحلة التخطيط حتى التسليم النهائي',
-            'التنسيق بين الفرق التشغيلية وضمان انسيابية التنفيذ',
-            'إدارة فريق التصوير الفوتوغرافي والمرئي وتوثيق الفعالية',
-          ],
-        },
-        {
-          client: 'شركة الديرة للتطوير — جولة إرثنا',
-          role: 'مدير التغطية الإعلامية',
-          bullets: [
-            'الإشراف على التخطيط والتنفيذ الكامل للتغطية الفوتوغرافية والمرئية',
-            'إدارة فريق العمل الإعلامي وضمان جودة المخرجات',
-            'الحرص على أن تعكس التغطية أهداف المشروع وهويته البصرية',
-          ],
-        },
-        {
-          client: 'هيئة تطوير محمية الإمام عبدالعزيز بن محمد الملكية',
-          role: 'الحفل السنوي — مساعد مدير المشاريع',
-          bullets: [
-            'المساهمة في إدارة سير العمل خلال تغطية الحفل السنوي',
-            'دعم فريق التغطية الإعلامية وضمان انسيابية التنفيذ الميداني',
-          ],
-        },
-      ],
+      moreLabel: 'اضغط للمزيد',
+      whatWeDidLabel: 'أبرز ما أنجزناه',
+      galleryLabel: 'صور من المشروع',
+      closeLabel: 'إغلاق',
     },
     skills: {
       kicker: 'القدرات',
@@ -84,58 +62,35 @@ export const content = {
   en: {
     dir: 'ltr',
     langLabel: 'ع',
-    nav: {
-      home: 'Home',
-      about: 'About',
-      projects: 'Projects',
-      skills: 'Skills',
-      contact: 'Contact',
-    },
+    themeLabelToDark: 'Dark mode',
+    themeLabelToLight: 'Light mode',
+    backToTop: 'Back to top',
     hero: {
+      greeting: "Hi, I'm",
       name: 'Awadh Fahad Almutairi',
       title: 'Media Project Manager & Visual Producer',
       location: 'Riyadh, Saudi Arabia',
-      bio: 'Media graduate from Imam Muhammad ibn Saud Islamic University, majoring in Radio and Television. Specialised in media project management, visual production, and event management.',
-      ctaProjects: 'View Projects',
+      bio: 'I work in media project management, visual production, and event management — turning ideas into professional media outputs.',
+      ctaProjects: 'View Work',
       ctaContact: 'Get in Touch',
     },
     about: {
       kicker: 'About',
       title: 'Who I Am',
       body: 'Media graduate from Imam Muhammad ibn Saud Islamic University, majoring in Radio and Television. Experienced in media project management, visual production, and event management, with a background in content writing and creative content creation. Skilled in leading projects, managing teams, and transforming ideas into professional media outputs that achieve goals with efficiency and high quality.',
+      educationLabel: 'Education',
+      education: 'B.A. in Media — Radio & Television',
+      university: 'Imam Muhammad ibn Saud Islamic University',
     },
-    projects: {
-      kicker: 'Selected Work',
-      title: 'Key Projects',
+    experience: {
+      kicker: 'Experience',
+      title: 'Experience & Work',
+      intro: 'Hands-on experience in media project management, visual production, and event management — working with government bodies and leading institutions to plan and deliver professional coverage and events. Selected work below:',
       roleLabel: 'Role',
-      items: [
-        {
-          client: 'Communications, Space & Technology Commission (CST)',
-          role: 'Official Event — Media & Event Manager',
-          bullets: [
-            'Managed and directed the official event from planning through final delivery',
-            'Oversaw coordination between operational teams to ensure smooth execution',
-            'Managed the photography and videography team responsible for documenting the event',
-          ],
-        },
-        {
-          client: 'Al-Dirah Development Company — Irathna Tour',
-          role: 'Media Coverage Manager',
-          bullets: [
-            'Oversaw full planning and execution of photo and video coverage',
-            'Managed the media team and ensured professional-quality deliverables',
-            "Ensured all coverage aligned with the project's objectives and visual identity",
-          ],
-        },
-        {
-          client: 'Imam Abdulaziz bin Mohammed Royal Reserve Development Authority',
-          role: 'Annual Ceremony — Assistant Project Manager',
-          bullets: [
-            'Contributed to workflow management throughout the annual ceremony coverage',
-            'Supported the media team and ensured smooth execution on the ground',
-          ],
-        },
-      ],
+      moreLabel: 'View details',
+      whatWeDidLabel: 'What we did',
+      galleryLabel: 'Project gallery',
+      closeLabel: 'Close',
     },
     skills: {
       kicker: 'Capabilities',
@@ -161,8 +116,107 @@ export const content = {
   },
 }
 
+// Language-neutral project meta + bilingual text. `hidden: true` keeps the
+// project in code but removes it from the live site.
+export const projects = [
+  {
+    id: 'cst',
+    hidden: false,
+    logo: '/images/projects/cst/logo.png',
+    images: [
+      '/images/projects/cst/1.jpeg',
+      '/images/projects/cst/2.jpeg',
+      '/images/projects/cst/3.jpeg',
+      '/images/projects/cst/4.jpeg',
+    ],
+    ar: {
+      client: 'هيئة الاتصالات والفضاء والتقنية',
+      role: 'فعالية رسمية بحضور معالي الوزير عبدالله السواحة — مدير الفعالية والإنتاج',
+      summary: 'إدارة وإخراج فعالية رسمية من التخطيط حتى التسليم النهائي.',
+      whatWeDid: [
+        'إدارة الفعالية والإشراف عليها من مرحلة التخطيط حتى التسليم النهائي',
+        'التنسيق بين الفرق التشغيلية وضمان انسيابية التنفيذ',
+        'إدارة فريق التصوير الفوتوغرافي والمرئي وتوثيق الفعالية',
+      ],
+    },
+    en: {
+      client: 'Communications, Space & Technology Commission (CST)',
+      role: 'Official Event — Media & Event Manager',
+      summary: 'Managed and directed an official event from planning to final delivery.',
+      whatWeDid: [
+        'Managed and directed the official event from planning through final delivery',
+        'Oversaw coordination between operational teams to ensure smooth execution',
+        'Managed the photography and videography team responsible for documenting the event',
+      ],
+    },
+  },
+  {
+    id: 'irathna',
+    hidden: false,
+    logo: '/images/projects/irathna/logo.png',
+    images: [
+      '/images/projects/irathna/1.jpeg',
+      '/images/projects/irathna/2.jpeg',
+      '/images/projects/irathna/3.jpeg',
+      '/images/projects/irathna/4.jpeg',
+    ],
+    ar: {
+      client: 'شركة الديرة للتطوير — جولة إرثنا',
+      role: 'مدير التغطية الإعلامية',
+      summary: 'إدارة التغطية الإعلامية الكاملة لجولة إرثنا تصويراً وإنتاجاً.',
+      whatWeDid: [
+        'الإشراف على التخطيط والتنفيذ الكامل للتغطية الفوتوغرافية والمرئية',
+        'إدارة فريق العمل الإعلامي وضمان جودة المخرجات',
+        'الحرص على أن تعكس التغطية أهداف المشروع وهويته البصرية',
+      ],
+    },
+    en: {
+      client: 'Al-Dirah Development Company — Irathna Tour',
+      role: 'Media Coverage Manager',
+      summary: 'Led full media coverage for the Irathna tour — photo and video.',
+      whatWeDid: [
+        'Oversaw full planning and execution of photo and video coverage',
+        'Managed the media team and ensured professional-quality deliverables',
+        "Ensured all coverage aligned with the project's objectives and visual identity",
+      ],
+    },
+  },
+  {
+    id: 'royal-reserve',
+    hidden: true, // hidden from the site until images are uploaded
+    logo: '/images/projects/royal-reserve/logo.png',
+    images: [
+      '/images/projects/royal-reserve/1.jpeg',
+      '/images/projects/royal-reserve/2.jpeg',
+      '/images/projects/royal-reserve/3.jpeg',
+      '/images/projects/royal-reserve/4.jpeg',
+    ],
+    ar: {
+      client: 'هيئة تطوير محمية الإمام عبدالعزيز بن محمد الملكية',
+      role: 'الحفل السنوي — مساعد مدير المشاريع',
+      summary: 'مساعدة إدارة المشاريع في تغطية الحفل السنوي للمحمية.',
+      whatWeDid: [
+        'المساهمة في إدارة سير العمل خلال تغطية الحفل السنوي',
+        'دعم فريق التغطية الإعلامية وضمان انسيابية التنفيذ الميداني',
+      ],
+    },
+    en: {
+      client: 'Imam Abdulaziz bin Mohammed Royal Reserve Development Authority',
+      role: 'Annual Ceremony — Assistant Project Manager',
+      summary: "Assistant project management for the reserve's annual ceremony coverage.",
+      whatWeDid: [
+        'Contributed to workflow management throughout the annual ceremony coverage',
+        'Supported the media team and ensured smooth execution on the ground',
+      ],
+    },
+  },
+]
+
 export const contactInfo = {
   email: 'Awadfalmutiri@gmail.com',
   phone: '+966583051517',
   linkedin: 'https://www.linkedin.com/in/awadh-almutairi-86b0933ab',
 }
+
+// Hero portrait (transparent PNG, rendered in black & white via CSS).
+export const heroImage = '/images/hero/awadh.png'
