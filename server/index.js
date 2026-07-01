@@ -102,6 +102,23 @@ app.post('/api/upload', auth, upload.single('image'), (req, res) => {
   res.json({ url: `/uploads/${req.file.filename}` })
 })
 
+// Auto-translate helper (Arabic <-> English) via the free MyMemory API.
+app.post('/api/translate', auth, async (req, res) => {
+  const { text, source, target } = req.body || {}
+  if (!text || !text.trim()) return res.json({ text: '' })
+  try {
+    const url =
+      'https://api.mymemory.translated.net/get?q=' +
+      encodeURIComponent(text) +
+      `&langpair=${source || 'ar'}|${target || 'en'}`
+    const r = await fetch(url)
+    const j = await r.json()
+    res.json({ text: j?.responseData?.translatedText || '' })
+  } catch (e) {
+    res.status(502).json({ error: 'translate failed' })
+  }
+})
+
 // uploaded images (persistent volume)
 app.use('/uploads', express.static(UPLOAD_DIR))
 

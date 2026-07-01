@@ -24,11 +24,20 @@ function LinkedInIcon() {
     </svg>
   )
 }
+function LinkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1" />
+      <path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" />
+    </svg>
+  )
+}
 
 export default function Contact() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const { data } = useContent()
   const contactInfo = data.contactInfo
+  const extraMethods = contactInfo.extraMethods || []
   const { contact } = t
 
   return (
@@ -56,6 +65,24 @@ export default function Contact() {
             <span className="contact-card__label">{contact.linkedinLabel}</span>
             <span className="contact-card__value">awadh-almutairi</span>
           </a>
+
+          {extraMethods.map((m) => {
+            const label = (lang === 'ar' ? m.labelAr : m.labelEn) || m.labelAr || m.labelEn || ''
+            const href = m.href || m.value || '#'
+            return (
+              <a
+                className="contact-card"
+                href={href}
+                target={/^https?:/i.test(href) ? '_blank' : undefined}
+                rel="noreferrer"
+                key={m.id}
+              >
+                <span className="contact-card__icon"><LinkIcon /></span>
+                <span className="contact-card__label">{label}</span>
+                <span className="contact-card__value" dir="ltr">{m.value}</span>
+              </a>
+            )
+          })}
         </Reveal>
       </div>
     </section>

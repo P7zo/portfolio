@@ -99,7 +99,7 @@ img, svg { display: block; }
   font-size: 0.76rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--accent, var(--text-dim));
   font-weight: 700;
   margin-bottom: 14px;
 }
@@ -196,6 +196,10 @@ html[dir='rtl'] .kicker { letter-spacing: 0.06em; }
   font-weight: 800;
   line-height: 1.06;
   letter-spacing: -0.01em;
+  background: linear-gradient(120deg, var(--text) 55%, var(--accent, var(--text)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .hero__title { font-size: clamp(1.05rem, 2.4vw, 1.5rem); color: var(--text-muted); font-weight: 600; margin-top: 14px; }
 .hero__bio { max-width: 520px; color: var(--text-muted); font-size: 1.06rem; margin-top: 20px; }
@@ -454,7 +458,7 @@ html[dir='rtl'] .modal__subtitle { letter-spacing: 0.04em; }
   transition: transform 0.25s var(--ease), border-color 0.25s;
 }
 .skill-chip:hover { transform: translateY(-4px); border-color: var(--border-strong); }
-.skill-chip__bar { width: 4px; height: 22px; border-radius: 4px; background: var(--text-dim); flex-shrink: 0; }
+.skill-chip__bar { width: 4px; height: 22px; border-radius: 4px; background: var(--accent, var(--text-dim)); flex-shrink: 0; }
 
 /* ===========================================================
    Contact
@@ -477,7 +481,7 @@ html[dir='rtl'] .modal__subtitle { letter-spacing: 0.04em; }
   display: grid; place-items: center;
   border-radius: 12px;
   border: 1px solid var(--border);
-  color: var(--text-muted);
+  color: var(--accent, var(--text-muted));
   margin-bottom: 8px;
 }
 .contact-card__label { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }

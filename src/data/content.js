@@ -220,6 +220,15 @@ export const contactInfo = {
   email: 'Awadfalmutiri@gmail.com',
   phone: '+966583051517',
   linkedin: 'https://www.linkedin.com/in/awadh-almutairi-86b0933ab',
+  // Extra custom contact methods added from the admin panel.
+  extraMethods: [], // [{ id, labelAr, labelEn, value, href }]
+}
+
+// Editable theme colors (admin panel). Applied at runtime over the CSS defaults.
+export const theme = {
+  accent: '#c19a4e',
+  dark: { bg: '#15161a', card: '#212329', text: '#e6e7ea' },
+  light: { bg: '#f4f4f2', card: '#ffffff', text: '#1c1d20' },
 }
 
 // Hero portrait (transparent PNG, rendered in black & white via CSS).
@@ -227,4 +236,4 @@ export const heroImage = '/images/hero/awadh.png'
 
 // Bundled defaults — used to seed the server on first run and as a fallback
 // for the public site when the API is unavailable.
-export const defaultData = { content, projects, contactInfo, heroImage }
+export const defaultData = { content, projects, contactInfo, heroImage, theme }

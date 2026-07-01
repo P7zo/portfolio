@@ -1,5 +1,6 @@
 import { ContentProvider } from './context/ContentContext.jsx'
 import { LanguageProvider } from './context/LanguageContext.jsx'
+import ThemeStyle from './components/ThemeStyle.jsx'
 import TopControls from './components/TopControls.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
@@ -12,6 +13,7 @@ import ScrollTop from './components/ScrollTop.jsx'
 export default function App() {
   return (
     <ContentProvider>
+      <ThemeStyle />
       <LanguageProvider>
         <TopControls />
         <main>
