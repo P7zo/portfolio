@@ -1,17 +1,18 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { content } from '../data/content.js'
+import { useContent } from './ContentContext.jsx'
 
 const LanguageContext = createContext(null)
 
 const STORAGE_KEY = 'portfolio-lang'
 
 export function LanguageProvider({ children }) {
+  const { data } = useContent()
   const [lang, setLang] = useState(() => {
     const saved = typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)
     return saved === 'en' || saved === 'ar' ? saved : 'ar' // default: Arabic
   })
 
-  const t = content[lang]
+  const t = data.content[lang]
 
   useEffect(() => {
     document.documentElement.lang = lang

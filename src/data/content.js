@@ -224,3 +224,7 @@ export const contactInfo = {
 
 // Hero portrait (transparent PNG, rendered in black & white via CSS).
 export const heroImage = '/images/hero/awadh.png'
+
+// Bundled defaults — used to seed the server on first run and as a fallback
+// for the public site when the API is unavailable.
+export const defaultData = { content, projects, contactInfo, heroImage }

@@ -1,5 +1,5 @@
 import { useLang } from '../context/LanguageContext.jsx'
-import { contactInfo } from '../data/content.js'
+import { useContent } from '../context/ContentContext.jsx'
 import Reveal from './Reveal.jsx'
 
 function MailIcon() {
@@ -27,6 +27,8 @@ function LinkedInIcon() {
 
 export default function Contact() {
   const { t } = useLang()
+  const { data } = useContent()
+  const contactInfo = data.contactInfo
   const { contact } = t
 
   return (

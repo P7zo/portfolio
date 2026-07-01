@@ -1,5 +1,5 @@
 import { useLang } from '../context/LanguageContext.jsx'
-import { heroImage } from '../data/content.js'
+import { useContent } from '../context/ContentContext.jsx'
 
 function PinIcon() {
   return (
@@ -12,6 +12,8 @@ function PinIcon() {
 
 export default function Hero() {
   const { t } = useLang()
+  const { data } = useContent()
+  const heroImage = data.heroImage
   const { hero } = t
 
   return (

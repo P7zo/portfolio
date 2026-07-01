@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# local server data + uploaded images (persisted on the host volume in prod)
+/data
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

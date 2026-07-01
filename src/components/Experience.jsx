@@ -1,22 +1,25 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useLang } from '../context/LanguageContext.jsx'
-import { projects } from '../data/content.js'
+import { useContent } from '../context/ContentContext.jsx'
 import Reveal from './Reveal.jsx'
 import ProjectCard from './ProjectCard.jsx'
 import ProjectModal from './ProjectModal.jsx'
 
-const visibleProjects = projects.filter((p) => !p.hidden)
-
-function idFromHash() {
-  const m = /^#project-(.+)$/.exec(window.location.hash)
-  if (!m) return null
-  const id = m[1]
-  return visibleProjects.some((p) => p.id === id) ? id : null
-}
-
 export default function Experience() {
   const { t } = useLang()
+  const { data } = useContent()
+  const visibleProjects = useMemo(
+    () => data.projects.filter((p) => !p.hidden),
+    [data.projects],
+  )
   const [activeId, setActiveId] = useState(null)
+
+  const idFromHash = useCallback(() => {
+    const m = /^#project-(.+)$/.exec(window.location.hash)
+    if (!m) return null
+    const id = m[1]
+    return visibleProjects.some((p) => p.id === id) ? id : null
+  }, [visibleProjects])
 
   // Open the matching project when the URL points at one (deep link / back-fwd).
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function Experience() {
       window.removeEventListener('popstate', sync)
       window.removeEventListener('hashchange', sync)
     }
-  }, [])
+  }, [idFromHash])
 
   const open = useCallback((id) => {
     if (window.location.hash !== `#project-${id}`) {
