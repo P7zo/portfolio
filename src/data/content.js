@@ -29,6 +29,8 @@ export const content = {
     experience: {
       kicker: 'الخبرة',
       title: 'الخبرة والأعمال',
+      currentRole: 'مدير مشاريع',
+      currentCompany: 'شركة ديتيلز للإنتاج الإعلامي',
       intro: 'خبرة عملية في إدارة المشاريع الإعلامية والإنتاج المرئي وإدارة الفعاليات، من خلال العمل مع جهات حكومية ومؤسسات بارزة على تخطيط وتنفيذ تغطيات وفعاليات احترافية. فيما يلي أبرز الأعمال:',
       roleLabel: 'الدور',
       moreLabel: 'اضغط للمزيد',
@@ -85,6 +87,8 @@ export const content = {
     experience: {
       kicker: 'Experience',
       title: 'Experience & Work',
+      currentRole: 'Project Manager',
+      currentCompany: 'Details Media Production',
       intro: 'Hands-on experience in media project management, visual production, and event management — working with government bodies and leading institutions to plan and deliver professional coverage and events. Selected work below:',
       roleLabel: 'Role',
       moreLabel: 'View details',

@@ -54,7 +54,19 @@ export default function Experience() {
           <h2 className="section__title">{t.experience.title}</h2>
         </Reveal>
 
-        <Reveal as="p" className="experience__intro" delay={100}>
+        <Reveal className="employer" delay={80}>
+          <span className="employer__icon">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round">
+              <rect x="3" y="7" width="18" height="13" rx="2" />
+              <path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7" />
+            </svg>
+          </span>
+          <span className="employer__role">{t.experience.currentRole}</span>
+          <span className="employer__sep">·</span>
+          <span className="employer__company">{t.experience.currentCompany}</span>
+        </Reveal>
+
+        <Reveal as="p" className="experience__intro" delay={140}>
           {t.experience.intro}
         </Reveal>
 
