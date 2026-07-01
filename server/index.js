@@ -16,8 +16,8 @@ const UPLOAD_DIR = path.join(DATA_DIR, 'uploads')
 const DATA_FILE = path.join(DATA_DIR, 'data.json')
 const DIST_DIR = path.join(ROOT, 'dist')
 
-const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || 'admin@awadhalmutairi.info').toLowerCase()
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'change-me'
+// Single access code (no email). Falls back to ADMIN_PASSWORD for compatibility.
+const ADMIN_CODE = process.env.ADMIN_CODE || process.env.ADMIN_PASSWORD || 'change-me'
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-insecure-secret-change-me'
 
 // --- storage ---
@@ -75,12 +75,12 @@ const upload = multer({
 
 // --- API ---
 app.post('/api/login', (req, res) => {
-  const { email, password } = req.body || {}
-  if (String(email || '').toLowerCase() === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-    const token = jwt.sign({ sub: ADMIN_EMAIL }, JWT_SECRET, { expiresIn: '7d' })
+  const { code } = req.body || {}
+  if (code && code === ADMIN_CODE) {
+    const token = jwt.sign({ sub: 'admin' }, JWT_SECRET, { expiresIn: '7d' })
     return res.json({ token })
   }
-  res.status(401).json({ error: 'invalid credentials' })
+  res.status(401).json({ error: 'invalid code' })
 })
 
 app.get('/api/content', (req, res) => {

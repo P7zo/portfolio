@@ -8,8 +8,7 @@ function getPath(obj, path) {
 }
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [code, setCode] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
 
@@ -21,9 +20,9 @@ function Login({ onLogin }) {
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ code }),
       })
-      if (!res.ok) throw new Error('بيانات الدخول غير صحيحة')
+      if (!res.ok) throw new Error('الرمز غير صحيح')
       const { token } = await res.json()
       localStorage.setItem(TOKEN_KEY, token)
       onLogin(token)
@@ -38,14 +37,17 @@ function Login({ onLogin }) {
     <div className="adm-login">
       <form className="adm-login__box" onSubmit={submit}>
         <h1>لوحة التحكم</h1>
-        <p className="adm-muted">سجّل الدخول لإدارة الموقع</p>
+        <p className="adm-muted">أدخل رمز الدخول لإدارة الموقع</p>
         <label className="adm-field">
-          <span>البريد الإلكتروني</span>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required />
-        </label>
-        <label className="adm-field">
-          <span>كلمة المرور</span>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" required />
+          <span>رمز الدخول</span>
+          <input
+            type="password"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            autoComplete="current-password"
+            autoFocus
+            required
+          />
         </label>
         {error && <p className="adm-error">{error}</p>}
         <button className="adm-btn adm-btn--primary" disabled={busy}>
