@@ -30,9 +30,9 @@ export default function ProjectModal({ project, onClose }) {
 
   const style = {
     '--pc-accent': rgba(color, 1),
-    '--pc-tint': rgba(color, 0.16),
-    '--pc-tint-soft': rgba(color, 0.05),
-    '--pc-border': rgba(color, 0.4),
+    '--pc-tint': rgba(color, 0.32),
+    '--pc-tint-soft': rgba(color, 0.1),
+    '--pc-border': rgba(color, 0.6),
   }
 
   return (

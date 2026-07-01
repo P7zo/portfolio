@@ -273,17 +273,20 @@ html[dir='rtl'] .kicker { letter-spacing: 0.06em; }
   inset-inline-start: 0;
   top: 0;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: var(--pc-accent, var(--border-strong));
-  opacity: 0;
+  opacity: 0.55;
   transition: opacity 0.35s;
+}
+.pc {
+  border-color: var(--pc-border, var(--border));
 }
 .pc:hover {
   transform: translateY(-6px);
-  border-color: var(--pc-border, var(--border-strong));
+  border-color: var(--pc-accent, var(--border-strong));
   box-shadow: var(--shadow);
 }
-.pc:hover::before { opacity: 0.85; }
+.pc:hover::before { opacity: 1; }
 
 .pc__logo {
   position: absolute;

@@ -24,23 +24,29 @@ export function useImageColor(src) {
         ctx.drawImage(img, 0, 0, size, size)
         const { data } = ctx.getImageData(0, 0, size, size)
 
-        let r = 0, g = 0, b = 0, count = 0
+        // Weight each pixel by its colorfulness so the image's real hue
+        // surfaces instead of averaging out to a muddy gray.
+        let r = 0, g = 0, b = 0, wSum = 0
         for (let i = 0; i < data.length; i += 4) {
-          const alpha = data[i + 3]
-          if (alpha < 125) continue
-          r += data[i]
-          g += data[i + 1]
-          b += data[i + 2]
-          count++
+          if (data[i + 3] < 125) continue
+          const pr = data[i], pg = data[i + 1], pb = data[i + 2]
+          const max = Math.max(pr, pg, pb)
+          const min = Math.min(pr, pg, pb)
+          const sat = max === 0 ? 0 : (max - min) / max
+          const w = 0.15 + sat * sat * 3 // colorful pixels dominate
+          r += pr * w
+          g += pg * w
+          b += pb * w
+          wSum += w
         }
-        if (!count) return
-        r = Math.round(r / count)
-        g = Math.round(g / count)
-        b = Math.round(b / count)
+        if (!wSum) return
+        r = Math.round(r / wSum)
+        g = Math.round(g / wSum)
+        b = Math.round(b / wSum)
 
-        // Mute it: pull each channel toward its own luminance (desaturate ~45%).
+        // Mute lightly so it stays elegant but is clearly visible.
         const lum = 0.299 * r + 0.587 * g + 0.114 * b
-        const mix = 0.45
+        const mix = 0.2
         r = Math.round(r * (1 - mix) + lum * mix)
         g = Math.round(g * (1 - mix) + lum * mix)
         b = Math.round(b * (1 - mix) + lum * mix)

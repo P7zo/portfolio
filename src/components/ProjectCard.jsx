@@ -9,9 +9,9 @@ export default function ProjectCard({ project, index, onOpen }) {
 
   const style = {
     '--pc-accent': rgba(color, 1),
-    '--pc-tint': rgba(color, 0.14),
-    '--pc-tint-soft': rgba(color, 0.06),
-    '--pc-border': rgba(color, 0.35),
+    '--pc-tint': rgba(color, 0.32),
+    '--pc-tint-soft': rgba(color, 0.12),
+    '--pc-border': rgba(color, 0.55),
   }
 
   return (

@@ -131,8 +131,8 @@ export const projects = [
     ],
     ar: {
       client: 'هيئة الاتصالات والفضاء والتقنية',
-      role: 'فعالية رسمية بحضور معالي الوزير عبدالله السواحة — مدير الفعالية والإنتاج',
-      summary: 'إدارة وإخراج فعالية رسمية من التخطيط حتى التسليم النهائي.',
+      role: 'مدير مشروع',
+      summary: 'إدارة وإخراج فعالية رسمية بحضور معالي الوزير عبدالله السواحة، من التخطيط حتى التسليم النهائي.',
       whatWeDid: [
         'إدارة الفعالية والإشراف عليها من مرحلة التخطيط حتى التسليم النهائي',
         'التنسيق بين الفرق التشغيلية وضمان انسيابية التنفيذ',
@@ -141,8 +141,8 @@ export const projects = [
     },
     en: {
       client: 'Communications, Space & Technology Commission (CST)',
-      role: 'Official Event — Media & Event Manager',
-      summary: 'Managed and directed an official event from planning to final delivery.',
+      role: 'Project Manager',
+      summary: 'Managed and directed an official event attended by H.E. the Minister, from planning to final delivery.',
       whatWeDid: [
         'Managed and directed the official event from planning through final delivery',
         'Oversaw coordination between operational teams to ensure smooth execution',
@@ -162,7 +162,7 @@ export const projects = [
     ],
     ar: {
       client: 'شركة الديرة للتطوير — جولة إرثنا',
-      role: 'مدير التغطية الإعلامية',
+      role: 'مدير مشروع',
       summary: 'إدارة التغطية الإعلامية الكاملة لجولة إرثنا تصويراً وإنتاجاً.',
       whatWeDid: [
         'الإشراف على التخطيط والتنفيذ الكامل للتغطية الفوتوغرافية والمرئية',
@@ -172,7 +172,7 @@ export const projects = [
     },
     en: {
       client: 'Al-Dirah Development Company — Irathna Tour',
-      role: 'Media Coverage Manager',
+      role: 'Project Manager',
       summary: 'Led full media coverage for the Irathna tour — photo and video.',
       whatWeDid: [
         'Oversaw full planning and execution of photo and video coverage',
@@ -193,7 +193,7 @@ export const projects = [
     ],
     ar: {
       client: 'هيئة تطوير محمية الإمام عبدالعزيز بن محمد الملكية',
-      role: 'الحفل السنوي — مساعد مدير المشاريع',
+      role: 'مدير مشروع',
       summary: 'مساعدة إدارة المشاريع في تغطية الحفل السنوي للمحمية.',
       whatWeDid: [
         'المساهمة في إدارة سير العمل خلال تغطية الحفل السنوي',
@@ -202,7 +202,7 @@ export const projects = [
     },
     en: {
       client: 'Imam Abdulaziz bin Mohammed Royal Reserve Development Authority',
-      role: 'Annual Ceremony — Assistant Project Manager',
+      role: 'Project Manager',
       summary: "Assistant project management for the reserve's annual ceremony coverage.",
       whatWeDid: [
         'Contributed to workflow management throughout the annual ceremony coverage',
